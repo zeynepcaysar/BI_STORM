@@ -1,0 +1,26 @@
+<SXmlObject SXmlObjectTYPE="project" SXmlObjectSEQ="5" SXmlObjectID="sieStormProject">
+  <data>
+    <repository>
+      <id>core</id>
+      <path>core</path>
+    </repository>
+    <repository>
+      <id>business</id>
+      <path>business</path>
+    </repository>
+  </data>
+  <login>
+    <enabled>true</enabled>
+    <user>storm</user>
+  </login>
+  <db>
+    <engine>mysql</engine>
+    <driver>QMYSQL</driver>
+    <host>127.0.0.1</host>
+    <port>3306</port>
+    <schema>bikestore</schema>
+    <user>root</user>
+    <pass>9Nphjq6bci3K+iI8/BRMTIisg52P/n1esbZika8Eu4+OVMGI1kBHgot0RMhHpv73B4tkk3M0oZTMvo1Lgueq07b8O9/1pKOlz72c7HWBIZvw55ZJVr/QebvEWuCElAMWf5qAGt83OAKXXGZMOTjV7MDGgdAheWDyC0ndOzmH2aBwEM2s4a9kqwZwyd1dkk4K</pass>
+  </db>
+  <db/>
+</SXmlObject>

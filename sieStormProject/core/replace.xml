@@ -1,0 +1,224 @@
+<storm>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_BRANDS_JOIN">
+    <repository>core</repository>
+    <parentID><![CDATA[products(brand_id) -> brands(brand_id)]]></parentID>
+    <value>-- , %1.*
+--	, %1.`brand_id` -- AS `%1_brand_id`
+--	, %1.`brand_name` -- AS `%1_brand_name`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_BRANDS_SELECT">
+    <repository>core</repository>
+    <parentID>brands</parentID>
+    <value>--	, brands.`brand_id`
+--	, brands.`brand_name`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_BRANDS_SELECT_REDUCED">
+    <repository>core</repository>
+    <parentID>brands</parentID>
+    <value>--	, brands.`brand_id`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_CATEGORIES_JOIN">
+    <repository>core</repository>
+    <parentID><![CDATA[products(category_id) -> categories(category_id)]]></parentID>
+    <value>-- , %1.*
+--	, %1.`category_id` -- AS `%1_category_id`
+--	, %1.`category_name` -- AS `%1_category_name`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_CATEGORIES_SELECT">
+    <repository>core</repository>
+    <parentID>categories</parentID>
+    <value>--	, categories.`category_id`
+--	, categories.`category_name`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_CATEGORIES_SELECT_REDUCED">
+    <repository>core</repository>
+    <parentID>categories</parentID>
+    <value>--	, categories.`category_id`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_CUSTOMERS_JOIN">
+    <repository>core</repository>
+    <parentID><![CDATA[orders(customer_id) -> customers(customer_id)]]></parentID>
+    <value>-- , %1.*
+--	, %1.`customer_id` -- AS `%1_customer_id`
+--	, %1.`first_name` -- AS `%1_first_name`
+--	, %1.`last_name` -- AS `%1_last_name`
+--	, %1.`phone` -- AS `%1_phone`
+--	, %1.`email` -- AS `%1_email`
+--	, %1.`street` -- AS `%1_street`
+--	, %1.`city` -- AS `%1_city`
+--	, %1.`state` -- AS `%1_state`
+--	, %1.`zip_code` -- AS `%1_zip_code`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_CUSTOMERS_SELECT">
+    <repository>core</repository>
+    <parentID>customers</parentID>
+    <value>--	, customers.`customer_id`
+--	, customers.`first_name`
+--	, customers.`last_name`
+--	, customers.`phone`
+--	, customers.`email`
+--	, customers.`street`
+--	, customers.`city`
+--	, customers.`state`
+--	, customers.`zip_code`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_CUSTOMERS_SELECT_REDUCED">
+    <repository>core</repository>
+    <parentID>customers</parentID>
+    <value>--	, customers.`customer_id`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_ORDERS_JOIN">
+    <repository>core</repository>
+    <parentID><![CDATA[order_items(order_id) -> orders(order_id)]]></parentID>
+    <value>-- , %1.*
+--	, %1.`order_id` -- AS `%1_order_id`
+--	, %1.`customer_id` -- AS `%1_customer_id`
+--	, %1.`order_status` -- AS `%1_order_status`
+--	, %1.`order_date` -- AS `%1_order_date`
+--	, %1.`required_date` -- AS `%1_required_date`
+--	, %1.`shipped_date` -- AS `%1_shipped_date`
+--	, %1.`store_id` -- AS `%1_store_id`
+--	, %1.`staff_id` -- AS `%1_staff_id`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_ORDERS_SELECT">
+    <repository>core</repository>
+    <parentID>orders</parentID>
+    <value>--	, orders.`order_id`
+--	, orders.`customer_id`
+--	, orders.`order_status`
+--	, orders.`order_date`
+--	, orders.`required_date`
+--	, orders.`shipped_date`
+--	, orders.`store_id`
+--	, orders.`staff_id`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_ORDERS_SELECT_REDUCED">
+    <repository>core</repository>
+    <parentID>orders</parentID>
+    <value>--	, orders.`order_id`
+--	, orders.`customer_id`
+--	, orders.`store_id`
+--	, orders.`staff_id`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_ORDER_ITEMS_SELECT">
+    <repository>core</repository>
+    <parentID>order_items</parentID>
+    <value>--	, order_items.`order_id`
+--	, order_items.`item_id`
+--	, order_items.`product_id`
+--	, order_items.`quantity`
+--	, order_items.`list_price`
+--	, order_items.`discount`
+--	, order_items.`order_items_id`
+--	, order_items.`total_price`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_ORDER_ITEMS_SELECT_REDUCED">
+    <repository>core</repository>
+    <parentID>order_items</parentID>
+    <value>--	, order_items.`order_id`
+--	, order_items.`product_id`
+--	, order_items.`order_items_id`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_PRODUCTS_JOIN">
+    <repository>core</repository>
+    <parentID><![CDATA[stocks(product_id) -> products(product_id)]]></parentID>
+    <value>-- , %1.*
+--	, %1.`product_id` -- AS `%1_product_id`
+--	, %1.`product_name` -- AS `%1_product_name`
+--	, %1.`brand_id` -- AS `%1_brand_id`
+--	, %1.`category_id` -- AS `%1_category_id`
+--	, %1.`model_year` -- AS `%1_model_year`
+--	, %1.`list_price` -- AS `%1_list_price`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_PRODUCTS_SELECT">
+    <repository>core</repository>
+    <parentID>products</parentID>
+    <value>--	, products.`product_id`
+--	, products.`product_name`
+--	, products.`brand_id`
+--	, products.`category_id`
+--	, products.`model_year`
+--	, products.`list_price`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_PRODUCTS_SELECT_REDUCED">
+    <repository>core</repository>
+    <parentID>products</parentID>
+    <value>--	, products.`product_id`
+--	, products.`brand_id`
+--	, products.`category_id`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_STAFFS_JOIN">
+    <repository>core</repository>
+    <parentID><![CDATA[orders(staff_id) -> staffs(staff_id)]]></parentID>
+    <value>-- , %1.*
+--	, %1.`staff_id` -- AS `%1_staff_id`
+--	, %1.`first_name` -- AS `%1_first_name`
+--	, %1.`last_name` -- AS `%1_last_name`
+--	, %1.`email` -- AS `%1_email`
+--	, %1.`phone` -- AS `%1_phone`
+--	, %1.`active` -- AS `%1_active`
+--	, %1.`store_id` -- AS `%1_store_id`
+--	, %1.`manager_id` -- AS `%1_manager_id`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_STAFFS_SELECT">
+    <repository>core</repository>
+    <parentID>staffs</parentID>
+    <value>--	, staffs.`staff_id`
+--	, staffs.`first_name`
+--	, staffs.`last_name`
+--	, staffs.`email`
+--	, staffs.`phone`
+--	, staffs.`active`
+--	, staffs.`store_id`
+--	, staffs.`manager_id`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_STAFFS_SELECT_REDUCED">
+    <repository>core</repository>
+    <parentID>staffs</parentID>
+    <value>--	, staffs.`staff_id`
+--	, staffs.`store_id`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_STOCKS_SELECT">
+    <repository>core</repository>
+    <parentID>stocks</parentID>
+    <value>--	, stocks.`store_id`
+--	, stocks.`product_id`
+--	, stocks.`quantity`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_STOCKS_SELECT_REDUCED">
+    <repository>core</repository>
+    <parentID>stocks</parentID>
+    <value>--	, stocks.`store_id`
+--	, stocks.`product_id`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_STORES_JOIN">
+    <repository>core</repository>
+    <parentID><![CDATA[staffs(store_id) -> stores(store_id)]]></parentID>
+    <value>-- , %1.*
+--	, %1.`store_id` -- AS `%1_store_id`
+--	, %1.`store_name` -- AS `%1_store_name`
+--	, %1.`phone` -- AS `%1_phone`
+--	, %1.`email` -- AS `%1_email`
+--	, %1.`street` -- AS `%1_street`
+--	, %1.`city` -- AS `%1_city`
+--	, %1.`state` -- AS `%1_state`
+--	, %1.`zip_code` -- AS `%1_zip_code`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_STORES_SELECT">
+    <repository>core</repository>
+    <parentID>stores</parentID>
+    <value>--	, stores.`store_id`
+--	, stores.`store_name`
+--	, stores.`phone`
+--	, stores.`email`
+--	, stores.`street`
+--	, stores.`city`
+--	, stores.`state`
+--	, stores.`zip_code`</value>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="replace" SXmlObjectID="REPLACE_STORES_SELECT_REDUCED">
+    <repository>core</repository>
+    <parentID>stores</parentID>
+    <value>--	, stores.`store_id`</value>
+  </SXmlObject>
+</storm>

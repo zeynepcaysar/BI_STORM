@@ -1,0 +1,602 @@
+<storm>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_BRANDS">
+    <repository>core</repository>
+    <parentID>brands</parentID>
+    <defaultExpression>brand_name
+// brand_id, brand_name</defaultExpression>
+    <data>SELECT 
+-- {% if reduced %}
+brands.*
+${REPLACE_BRANDS_SELECT_REDUCED}
+--
+-- {% else %}
+brands.*
+${REPLACE_BRANDS_SELECT}
+--
+
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`brands` brands
+--
+
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_BRANDS_GLOBALS">
+    <repository>core</repository>
+    <parentID>brands</parentID>
+    <glob>
+      <enabled>true</enabled>
+    </glob>
+    <defaultExpression>brand_name
+// brand_id, brand_name</defaultExpression>
+    <data>SELECT 
+-- {% if reduced %}
+brands.*
+${SELECT_REDUCED}
+--
+-- {% else %}
+brands.*
+--	, brands.`brand_id`
+--	, brands.`brand_name`
+--
+
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`brands` brands
+--
+
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_CATEGORIES">
+    <repository>core</repository>
+    <parentID>categories</parentID>
+    <defaultExpression>category_name
+// category_id, category_name</defaultExpression>
+    <data>SELECT 
+-- {% if reduced %}
+categories.*
+${REPLACE_CATEGORIES_SELECT_REDUCED}
+--
+-- {% else %}
+categories.*
+${REPLACE_CATEGORIES_SELECT}
+--
+
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`categories` categories
+--
+
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_CATEGORIES_GLOBALS">
+    <repository>core</repository>
+    <parentID>categories</parentID>
+    <glob>
+      <enabled>true</enabled>
+    </glob>
+    <defaultExpression>category_name
+// category_id, category_name</defaultExpression>
+    <data>SELECT 
+-- {% if reduced %}
+categories.*
+${SELECT_REDUCED}
+--
+-- {% else %}
+categories.*
+--	, categories.`category_id`
+--	, categories.`category_name`
+--
+
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`categories` categories
+--
+
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_CUSTOMERS">
+    <repository>core</repository>
+    <parentID>customers</parentID>
+    <defaultExpression>first_name, last_name, phone, email, street, city, state
+// customer_id, first_name, last_name, phone, email, street, city, state, zip_code</defaultExpression>
+    <data>SELECT 
+-- {% if reduced %}
+customers.*
+${REPLACE_CUSTOMERS_SELECT_REDUCED}
+--
+-- {% else %}
+customers.*
+${REPLACE_CUSTOMERS_SELECT}
+--
+
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`customers` customers
+--
+
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_CUSTOMERS_GLOBALS">
+    <repository>core</repository>
+    <parentID>customers</parentID>
+    <glob>
+      <enabled>true</enabled>
+    </glob>
+    <defaultExpression>first_name, last_name, phone, email, street, city, state
+// customer_id, first_name, last_name, phone, email, street, city, state, zip_code</defaultExpression>
+    <data>SELECT 
+-- {% if reduced %}
+customers.*
+${SELECT_REDUCED}
+--
+-- {% else %}
+customers.*
+--	, customers.`customer_id`
+--	, customers.`first_name`
+--	, customers.`last_name`
+--	, customers.`phone`
+--	, customers.`email`
+--	, customers.`street`
+--	, customers.`city`
+--	, customers.`state`
+--	, customers.`zip_code`
+--
+
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`customers` customers
+--
+
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_ORDERS">
+    <repository>core</repository>
+    <parentID>orders</parentID>
+    <defaultExpression>order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id, staff_id</defaultExpression>
+    <data>-- [list of duplicated columns below]
+-- city [customers,stores]
+-- customer_id [orders,customers]
+-- email [customers,staffs,stores]
+-- first_name [customers,staffs]
+-- last_name [customers,staffs]
+-- phone [customers,staffs,stores]
+-- staff_id [orders,staffs]
+-- state [customers,stores]
+-- store_id [orders,staffs,stores]
+-- street [customers,stores]
+-- zip_code [customers,stores]
+
+
+SELECT 
+-- {% if reduced %}
+orders.*
+${REPLACE_ORDERS_SELECT_REDUCED}
+--
+-- {% else %}
+orders.*
+${REPLACE_ORDERS_SELECT}
+--
+${REPLACE_CUSTOMERS_JOIN(customers)}
+${REPLACE_STAFFS_JOIN(staffs)}
+${REPLACE_STORES_JOIN(stores)}
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`orders` orders
+--
+LEFT JOIN `${SCHEMA}`.`customers` customers ON (orders.`customer_id` = customers.`customer_id`)
+-- LEFT JOIN `${SCHEMA}`.`staffs` staffs ON (orders.`staff_id` = staffs.`staff_id`)
+-- LEFT JOIN `${SCHEMA}`.`stores` stores ON (orders.`store_id` = stores.`store_id`)
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectSEQ="5" SXmlObjectID="QUERY_ORDER_ITEMS">
+    <repository>core</repository>
+    <parentID>order_items</parentID>
+    <defaultExpression>order_id, item_id, product_id, quantity, list_price, discount, order_items_id</defaultExpression>
+    <data>-- [list of duplicated columns below]
+-- list_price [order_items,products]
+-- order_id [order_items,orders]
+-- product_id [order_items,products]
+
+
+SELECT 
+-- {% if reduced %}
+order_items.*
+--	, order_items.`order_id`
+--	, order_items.`product_id`
+--	, order_items.`order_items_id`
+--
+-- {% else %}
+order_items.*
+--	, order_items.`order_id`
+--	, order_items.`item_id`
+--	, order_items.`product_id`
+--	, order_items.`quantity`
+--	, order_items.`list_price`
+--	, order_items.`discount`
+--	, order_items.`order_items_id`
+--
+-- , orders.*
+--	, orders.`order_id` -- AS `orders_order_id`
+	, orders.`customer_id` -- AS `orders_customer_id`
+--	, orders.`order_status` -- AS `orders_order_status`
+--	, orders.`order_date` -- AS `orders_order_date`
+--	, orders.`required_date` -- AS `orders_required_date`
+--	, orders.`shipped_date` -- AS `orders_shipped_date`
+--	, orders.`store_id` -- AS `orders_store_id`
+--	, orders.`staff_id` -- AS `orders_staff_id`
+-- , products.*
+--	, products.`product_id` -- AS `products_product_id`
+	, products.`product_name` -- AS `products_product_name`
+--	, products.`brand_id` -- AS `products_brand_id`
+--	, products.`category_id` -- AS `products_category_id`
+--	, products.`model_year` -- AS `products_model_year`
+--	, products.`list_price` -- AS `products_list_price`
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`order_items` order_items
+--
+LEFT JOIN `${SCHEMA}`.`orders` orders ON (order_items.`order_id` = orders.`order_id`)
+LEFT JOIN `${SCHEMA}`.`products` products ON (order_items.`product_id` = products.`product_id`)
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_ORDER_ITEMS_GLOBALS">
+    <repository>core</repository>
+    <parentID>order_items</parentID>
+    <glob>
+      <enabled>true</enabled>
+    </glob>
+    <defaultExpression>order_id, item_id, product_id, quantity, list_price, discount, order_items_id</defaultExpression>
+    <data>SELECT 
+-- {% if reduced %}
+order_items.*
+${SELECT_REDUCED}
+--
+-- {% else %}
+order_items.*
+--	, order_items.`order_id`
+--	, order_items.`item_id`
+--	, order_items.`product_id`
+--	, order_items.`quantity`
+--	, order_items.`list_price`
+--	, order_items.`discount`
+--	, order_items.`order_items_id`
+--
+
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`order_items` order_items
+--
+
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_PRODUCTS">
+    <repository>core</repository>
+    <parentID>products</parentID>
+    <defaultExpression>product_name
+// product_id, product_name, brand_id, category_id, model_year, list_price</defaultExpression>
+    <data>-- [list of duplicated columns below]
+-- brand_id [products,brands]
+-- category_id [products,categories]
+
+
+SELECT 
+-- {% if reduced %}
+products.*
+${REPLACE_PRODUCTS_SELECT_REDUCED}
+--
+-- {% else %}
+products.*
+${REPLACE_PRODUCTS_SELECT}
+--
+${REPLACE_BRANDS_JOIN(brands)}
+${REPLACE_CATEGORIES_JOIN(categories)}
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`products` products
+--
+-- LEFT JOIN `${SCHEMA}`.`brands` brands ON (products.`brand_id` = brands.`brand_id`)
+-- LEFT JOIN `${SCHEMA}`.`categories` categories ON (products.`category_id` = categories.`category_id`)
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_PRODUCTS_GLOBALS">
+    <repository>core</repository>
+    <parentID>products</parentID>
+    <glob>
+      <enabled>true</enabled>
+    </glob>
+    <defaultExpression>product_name
+// product_id, product_name, brand_id, category_id, model_year, list_price</defaultExpression>
+    <data>SELECT 
+-- {% if reduced %}
+products.*
+${SELECT_REDUCED}
+--
+-- {% else %}
+products.*
+--	, products.`product_id`
+--	, products.`product_name`
+--	, products.`brand_id`
+--	, products.`category_id`
+--	, products.`model_year`
+--	, products.`list_price`
+--
+
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`products` products
+--
+
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_STAFFS">
+    <repository>core</repository>
+    <parentID>staffs</parentID>
+    <defaultExpression>first_name, last_name, email, phone
+// staff_id, first_name, last_name, email, phone, active, store_id, manager_id</defaultExpression>
+    <data>-- [list of duplicated columns below]
+-- email [staffs,stores]
+-- phone [staffs,stores]
+-- store_id [staffs,stores]
+
+
+SELECT 
+-- {% if reduced %}
+staffs.*
+${REPLACE_STAFFS_SELECT_REDUCED}
+--
+-- {% else %}
+staffs.*
+${REPLACE_STAFFS_SELECT}
+--
+${REPLACE_STORES_JOIN(stores)}
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`staffs` staffs
+--
+-- LEFT JOIN `${SCHEMA}`.`stores` stores ON (staffs.`store_id` = stores.`store_id`)
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_STAFFS_GLOBALS">
+    <repository>core</repository>
+    <parentID>staffs</parentID>
+    <glob>
+      <enabled>true</enabled>
+    </glob>
+    <defaultExpression>first_name, last_name, email, phone
+// staff_id, first_name, last_name, email, phone, active, store_id, manager_id</defaultExpression>
+    <data>SELECT 
+-- {% if reduced %}
+staffs.*
+${SELECT_REDUCED}
+--
+-- {% else %}
+staffs.*
+--	, staffs.`staff_id`
+--	, staffs.`first_name`
+--	, staffs.`last_name`
+--	, staffs.`email`
+--	, staffs.`phone`
+--	, staffs.`active`
+--	, staffs.`store_id`
+--	, staffs.`manager_id`
+--
+
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`staffs` staffs
+--
+
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_STOCKS">
+    <repository>core</repository>
+    <parentID>stocks</parentID>
+    <defaultExpression>store_id, product_id, quantity</defaultExpression>
+    <data>-- [list of duplicated columns below]
+-- product_id [stocks,products]
+-- store_id [stocks,stores]
+
+
+SELECT 
+-- {% if reduced %}
+stocks.*
+${REPLACE_STOCKS_SELECT_REDUCED}
+--
+-- {% else %}
+stocks.*
+${REPLACE_STOCKS_SELECT}
+--
+${REPLACE_PRODUCTS_JOIN(products)}
+${REPLACE_STORES_JOIN(stores)}
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`stocks` stocks
+--
+LEFT JOIN `${SCHEMA}`.`products` products ON (stocks.`product_id` = products.`product_id`)
+-- LEFT JOIN `${SCHEMA}`.`stores` stores ON (stocks.`store_id` = stores.`store_id`)
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_STOCKS_GLOBALS">
+    <repository>core</repository>
+    <parentID>stocks</parentID>
+    <glob>
+      <enabled>true</enabled>
+    </glob>
+    <defaultExpression>store_id, product_id, quantity</defaultExpression>
+    <data>SELECT 
+-- {% if reduced %}
+stocks.*
+${SELECT_REDUCED}
+--
+-- {% else %}
+stocks.*
+--	, stocks.`store_id`
+--	, stocks.`product_id`
+--	, stocks.`quantity`
+--
+
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`stocks` stocks
+--
+
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_STORES">
+    <repository>core</repository>
+    <parentID>stores</parentID>
+    <defaultExpression>store_name, phone, email, street, city, state
+// store_id, store_name, phone, email, street, city, state, zip_code</defaultExpression>
+    <data>SELECT 
+-- {% if reduced %}
+stores.*
+${REPLACE_STORES_SELECT_REDUCED}
+--
+-- {% else %}
+stores.*
+${REPLACE_STORES_SELECT}
+--
+
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`stores` stores
+--
+
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="query" SXmlObjectID="QUERY_STORES_GLOBALS">
+    <repository>core</repository>
+    <parentID>stores</parentID>
+    <glob>
+      <enabled>true</enabled>
+    </glob>
+    <defaultExpression>store_name, phone, email, street, city, state
+// store_id, store_name, phone, email, street, city, state, zip_code</defaultExpression>
+    <data>SELECT 
+-- {% if reduced %}
+stores.*
+${SELECT_REDUCED}
+--
+-- {% else %}
+stores.*
+--	, stores.`store_id`
+--	, stores.`store_name`
+--	, stores.`phone`
+--	, stores.`email`
+--	, stores.`street`
+--	, stores.`city`
+--	, stores.`state`
+--	, stores.`zip_code`
+--
+
+--
+-- {% endif %}
+--
+FROM `${SCHEMA}`.`stores` stores
+--
+
+--
+WHERE ${PARAMS}
+--
+AND ${CONTEXT}
+--
+LIMIT ${LIMIT}</data>
+  </SXmlObject>
+</storm>

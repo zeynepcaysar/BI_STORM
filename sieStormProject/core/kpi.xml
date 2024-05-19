@@ -1,0 +1,58 @@
+<storm>
+  <SXmlObject SXmlObjectTYPE="kpi" SXmlObjectID="KPI_NUMBER_OF_CUSTOMERS">
+    <repository>core</repository>
+    <alias>Number of customers</alias>
+    <parentID>DATASET_ORDERS</parentID>
+    <owner>storm</owner>
+    <factor>CUSTOMER_ID_PTR_CUSTOMERS</factor>
+    <expression>COUNT_DISTINCT</expression>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="kpi" SXmlObjectSEQ="1" SXmlObjectID="KPI_CUSTOMERS">
+    <repository>core</repository>
+    <alias>Number of customers</alias>
+    <parentID>DATASET_CUSTOMERS</parentID>
+    <owner>storm</owner>
+    <factor>CUSTOMER_ID</factor>
+    <expression>COUNT</expression>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="kpi" SXmlObjectSEQ="1" SXmlObjectID="KPI_CUSTOMERS_1">
+    <repository>core</repository>
+    <alias>Number of states where customers reside</alias>
+    <parentID>DATASET_CUSTOMERS</parentID>
+    <owner>storm</owner>
+    <factor>STATE</factor>
+    <expression>COUNT_DISTINCT</expression>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="kpi" SXmlObjectSEQ="1" SXmlObjectID="KPI_ORDERS">
+    <repository>core</repository>
+    <alias>Number of orders</alias>
+    <parentID>DATASET_ORDERS</parentID>
+    <owner>storm</owner>
+    <factor>ORDER_ID</factor>
+    <expression>COUNT</expression>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="kpi" SXmlObjectSEQ="2" SXmlObjectID="KPI_NUMBER_OF_SHIPPED_ORDERS">
+    <repository>core</repository>
+    <alias>Number of selected customers</alias>
+    <parentID>DATASET_ORDERS</parentID>
+    <owner>storm</owner>
+    <factor>CUSTOMER_ID</factor>
+    <expression>COUNT</expression>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="kpi" SXmlObjectID="KPI_NUMBER_OF_STORES">
+    <repository>core</repository>
+    <alias>Number of stores</alias>
+    <parentID>DATASET_ORDERS</parentID>
+    <owner>storm</owner>
+    <factor>STORE_ID</factor>
+    <expression>COUNT_DISTINCT</expression>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="kpi" SXmlObjectID="KPI_NUMBER_OF_STORES_1">
+    <repository>core</repository>
+    <alias>Number of stores</alias>
+    <parentID>DATASET_STORES</parentID>
+    <owner>storm</owner>
+    <factor>STORE_ID</factor>
+    <expression>COUNT</expression>
+  </SXmlObject>
+</storm>

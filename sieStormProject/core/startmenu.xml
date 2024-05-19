@@ -1,0 +1,25 @@
+<storm>
+  <SXmlObject SXmlObjectTYPE="startmenu" SXmlObjectSEQ="8" SXmlObjectID="STARTMENU_START">
+    <repository>core</repository>
+    <node enabled="false" alias="B" SXmlObjectID="B">
+      <node dashboard="DASHBOARD_BRANDS"/>
+    </node>
+    <node alias="Customers" SXmlObjectID="C">
+      <alias>Customers</alias>
+      <node dashboard="DASHBOARD_CUSTOMERS"/>
+      <node dashboard="DASHBOARD_ORDERS"/>
+      <node dashboard="DASHBOARD_ORDER_ITEMS"/>
+    </node>
+    <node enabled="false" SXmlObjectID="O"/>
+    <node alias="Products" SXmlObjectID="P">
+      <alias>Products</alias>
+      <node dashboard="DASHBOARD_PRODUCTS"/>
+      <node dashboard="DASHBOARD_STOCKS"/>
+      <node dashboard="DASHBOARD_STORES"/>
+    </node>
+    <node alias="Staffs" SXmlObjectID="S">
+      <alias>Staffs</alias>
+      <node dashboard="DASHBOARD_STAFFS"/>
+    </node>
+  </SXmlObject>
+</storm>

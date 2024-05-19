@@ -1,0 +1,120 @@
+<storm>
+  <SXmlObject SXmlObjectTYPE="list" SXmlObjectSEQ="1" SXmlObjectID="LIST_ORDERS">
+    <repository>core</repository>
+    <alias>Orders</alias>
+    <parentID>DATASET_ORDERS</parentID>
+    <owner>storm</owner>
+    <dataFilter><![CDATA[[
+    {
+        "factor": ""
+    }
+]
+]]></dataFilter>
+    <columnset>
+      <factor>ORDER_ID</factor>
+      <factor>CUSTOMER_ID</factor>
+      <factor>CUSTOMER_ID_PTR_CUSTOMERS</factor>
+      <factor>ORDER_STATUS</factor>
+      <factor>ORDER_DATE</factor>
+      <factor>REQUIRED_DATE</factor>
+      <factor>SHIPPED_DATE</factor>
+      <factor>STORE_ID</factor>
+      <factor>STORE_ID_PTR_STORES</factor>
+      <factor>STAFF_ID</factor>
+      <factor>STAFF_ID_PTR_STAFFS</factor>
+    </columnset>
+    <sort/>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="list" SXmlObjectID="LIST_ORDER_ITEMS">
+    <repository>core</repository>
+    <alias>Order items</alias>
+    <parentID>DATASET_ORDER_ITEMS</parentID>
+    <owner>storm</owner>
+    <dataFilter><![CDATA[[
+    {
+        "factor": ""
+    }
+]
+]]></dataFilter>
+    <columnset>
+      <factor>ORDER_ID</factor>
+      <factor>ITEM_ID</factor>
+      <factor>PRODUCT_ID</factor>
+      <factor>QUANTITY</factor>
+      <factor>LIST_PRICE</factor>
+      <factor>DISCOUNT</factor>
+      <factor>ORDER_ITEMS_ID</factor>
+    </columnset>
+    <sort/>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="list" SXmlObjectSEQ="9" SXmlObjectID="LIST_ORDER_ITEMS_1">
+    <repository>core</repository>
+    <alias>Order items</alias>
+    <parentID>DATASET_ORDER_ITEMS</parentID>
+    <dataFilter><![CDATA[[
+    {
+        "factor": ""
+    }
+]
+]]></dataFilter>
+    <columnset>
+      <factor>ORDER_ID</factor>
+      <factor>CUSTOMER_ID_PTR_CUSTOMERS</factor>
+      <factor>ITEM_ID</factor>
+      <factor>PRODUCT_ID</factor>
+      <factor>PRODUCT_NAME</factor>
+      <factor>QUANTITY</factor>
+      <factor>LIST_PRICE</factor>
+      <factor>TOTAL_PRICE</factor>
+      <factor>DISCOUNT</factor>
+    </columnset>
+    <sort>
+      <sort>
+        <factor>ORDER_ID</factor>
+        <breakLine>true</breakLine>
+      </sort>
+    </sort>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="list" SXmlObjectID="LIST_PRODUCTS">
+    <repository>core</repository>
+    <alias>Products</alias>
+    <parentID>DATASET_PRODUCTS</parentID>
+    <owner>storm</owner>
+    <dataFilter><![CDATA[[
+    {
+        "factor": ""
+    }
+]
+]]></dataFilter>
+    <columnset>
+      <factor>PRODUCT_ID</factor>
+      <factor>PRODUCT_NAME</factor>
+      <factor>BRAND_ID</factor>
+      <factor>BRAND_ID_PTR_BRANDS</factor>
+      <factor>CATEGORY_ID</factor>
+      <factor>CATEGORY_ID_PTR_CATEGORIES</factor>
+      <factor>MODEL_YEAR</factor>
+      <factor>LIST_PRICE</factor>
+    </columnset>
+    <sort/>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="list" SXmlObjectSEQ="1" SXmlObjectID="LIST_STOCKS">
+    <repository>core</repository>
+    <alias>Stocks</alias>
+    <parentID>DATASET_STOCKS</parentID>
+    <dataFilter><![CDATA[[
+    {
+        "factor": ""
+    }
+]
+]]></dataFilter>
+    <columnset>
+      <factor>PRODUCT_ID</factor>
+      <factor>PRODUCT_ID_PTR_PRODUCTS</factor>
+      <factor>QUANTITY</factor>
+      <factor>STORE_ID</factor>
+      <factor>STORE_ID_PTR_STORES</factor>
+    </columnset>
+    <sort/>
+  </SXmlObject>
+</storm>

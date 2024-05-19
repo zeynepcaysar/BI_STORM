@@ -1,0 +1,688 @@
+<storm>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="ACTIVE">
+    <repository>core</repository>
+    <alias>Active</alias>
+    <domain>staffs</domain>
+    <parentID>active</parentID>
+    <expression>active</expression>
+    <options>
+      <style>STYLE_INTEGER</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="BRAND_ID">
+    <repository>core</repository>
+    <alias>Brand id</alias>
+    <parentID>brand_id</parentID>
+    <description>brands products</description>
+    <expression>brand_id</expression>
+    <options>
+      <style>STYLE_PK</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="BRAND_ID_PTR_BRANDS">
+    <repository>core</repository>
+    <alias><![CDATA[Brand id -> Brands]]></alias>
+    <parentID>brand_id</parentID>
+    <description><![CDATA[products(brand_id) -> brands(brand_id)]]></description>
+    <expression>//brand_name
+// brand_id, brand_name</expression>
+    <pointer enabled="true">
+      <datasource>QUERY_BRANDS_GLOBALS</datasource>
+      <link>brand_id:brand_id</link>
+    </pointer>
+    <options>
+      <style>STYLE_POINTER</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="BRAND_NAME">
+    <repository>core</repository>
+    <alias>Brand name</alias>
+    <domain>brands</domain>
+    <parentID>brand_name</parentID>
+    <expression>brand_name</expression>
+    <options>
+      <style>STYLE_STRING</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="CATEGORY_ID">
+    <repository>core</repository>
+    <alias>Category id</alias>
+    <parentID>category_id</parentID>
+    <description>categories products</description>
+    <expression>category_id</expression>
+    <options>
+      <style>STYLE_PK</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="CATEGORY_ID_PTR_CATEGORIES">
+    <repository>core</repository>
+    <alias><![CDATA[Category id -> Categories]]></alias>
+    <parentID>category_id</parentID>
+    <description><![CDATA[products(category_id) -> categories(category_id)]]></description>
+    <expression>//category_name
+// category_id, category_name</expression>
+    <pointer enabled="true">
+      <datasource>QUERY_CATEGORIES_GLOBALS</datasource>
+      <link>category_id:category_id</link>
+    </pointer>
+    <options>
+      <style>STYLE_POINTER</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="CATEGORY_NAME">
+    <repository>core</repository>
+    <alias>Category name</alias>
+    <domain>categories</domain>
+    <parentID>category_name</parentID>
+    <expression>category_name</expression>
+    <options>
+      <style>STYLE_STRING</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="CITY">
+    <repository>core</repository>
+    <alias>City</alias>
+    <parentID>city</parentID>
+    <description>customers stores</description>
+    <expression>city</expression>
+    <options>
+      <style>STYLE_STRING</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="CUSTOMER_ID">
+    <repository>core</repository>
+    <alias>Customer id</alias>
+    <parentID>customer_id</parentID>
+    <description>customers orders</description>
+    <expression>customer_id</expression>
+    <options>
+      <style>STYLE_PK</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectSEQ="1" SXmlObjectID="CUSTOMER_ID_PTR_CUSTOMERS">
+    <repository>core</repository>
+    <alias><![CDATA[Customer id -> Customers]]></alias>
+    <parentID>customer_id</parentID>
+    <description><![CDATA[orders(customer_id) -> customers(customer_id)]]></description>
+    <expression>first_name, last_name
+//first_name, last_name, phone, email, street, city, state
+// customer_id, first_name, last_name, phone, email, street, city, state, zip_code</expression>
+    <pointer enabled="true">
+      <datasource>QUERY_CUSTOMERS_GLOBALS</datasource>
+      <link>customer_id:customer_id</link>
+    </pointer>
+    <options>
+      <style>STYLE_POINTER</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="DISCOUNT">
+    <repository>core</repository>
+    <alias>Discount</alias>
+    <domain>order_items</domain>
+    <parentID>discount</parentID>
+    <expression>discount</expression>
+    <options>
+      <style>STYLE_INTEGER</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="EMAIL">
+    <repository>core</repository>
+    <alias>Email</alias>
+    <parentID>email</parentID>
+    <description>customers staffs stores</description>
+    <expression>email</expression>
+    <options>
+      <style>STYLE_STRING</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="FIRST_NAME">
+    <repository>core</repository>
+    <alias>First name</alias>
+    <parentID>first_name</parentID>
+    <description>customers staffs</description>
+    <expression>first_name</expression>
+    <options>
+      <style>STYLE_STRING</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="ITEM_ID">
+    <repository>core</repository>
+    <alias>Item id</alias>
+    <domain>order_items</domain>
+    <parentID>item_id</parentID>
+    <expression>item_id</expression>
+    <options>
+      <style>STYLE_INTEGER</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="LAST_NAME">
+    <repository>core</repository>
+    <alias>Last name</alias>
+    <parentID>last_name</parentID>
+    <description>customers staffs</description>
+    <expression>last_name</expression>
+    <options>
+      <style>STYLE_STRING</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectSEQ="2" SXmlObjectID="LIST_PRICE">
+    <repository>core</repository>
+    <alias>List price</alias>
+    <parentID>list_price</parentID>
+    <description>order_items products</description>
+    <options>
+      <style>STYLE_INTEGER</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectSEQ="4" SXmlObjectID="LIST_PRICE_QUANTITY">
+    <repository>core</repository>
+    <alias>List price*Quantity</alias>
+    <parentID>list_price</parentID>
+    <description>order_items products</description>
+    <owner>storm</owner>
+    <expression>=$(list_price)*$(quantity)</expression>
+    <options>
+      <style>STYLE_INTEGER</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="MANAGER_ID">
+    <repository>core</repository>
+    <alias>Manager id</alias>
+    <domain>staffs</domain>
+    <parentID>manager_id</parentID>
+    <expression>manager_id</expression>
+    <options>
+      <style>STYLE_INTEGER</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="MODEL_YEAR">
+    <repository>core</repository>
+    <alias>Model year</alias>
+    <domain>products</domain>
+    <parentID>model_year</parentID>
+    <expression>model_year</expression>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="ORDER_DATE">
+    <repository>core</repository>
+    <alias>Order date</alias>
+    <domain>orders</domain>
+    <parentID>order_date</parentID>
+    <expression>order_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="ORDER_DATE_DATE_DAY_OF_WEEK">
+    <repository>core</repository>
+    <alias>Order datedate_yeardate_year_monthdate_year_seasondate_seasondate_year_quarterdate_quarterdate_monthdate_day_of_week</alias>
+    <domain>orders</domain>
+    <parentID>order_date</parentID>
+    <type>date_day_of_week</type>
+    <expression>order_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="ORDER_DATE_DATE_MONTH">
+    <repository>core</repository>
+    <alias>Order datedate_yeardate_year_monthdate_year_seasondate_seasondate_year_quarterdate_quarterdate_month</alias>
+    <domain>orders</domain>
+    <parentID>order_date</parentID>
+    <type>date_month</type>
+    <expression>order_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="ORDER_DATE_DATE_QUARTER">
+    <repository>core</repository>
+    <alias>Order datedate_yeardate_year_monthdate_year_seasondate_seasondate_year_quarterdate_quarter</alias>
+    <domain>orders</domain>
+    <parentID>order_date</parentID>
+    <type>date_quarter</type>
+    <expression>order_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="ORDER_DATE_DATE_SEASON">
+    <repository>core</repository>
+    <alias>Order datedate_yeardate_year_monthdate_year_seasondate_season</alias>
+    <domain>orders</domain>
+    <parentID>order_date</parentID>
+    <type>date_season</type>
+    <expression>order_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="ORDER_DATE_DATE_YEAR">
+    <repository>core</repository>
+    <alias>Order datedate_year</alias>
+    <domain>orders</domain>
+    <parentID>order_date</parentID>
+    <type>date_year</type>
+    <expression>order_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="ORDER_DATE_DATE_YEAR_MONTH">
+    <repository>core</repository>
+    <alias>Order datedate_yeardate_year_month</alias>
+    <domain>orders</domain>
+    <parentID>order_date</parentID>
+    <type>date_year_month</type>
+    <expression>order_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="ORDER_DATE_DATE_YEAR_QUARTER">
+    <repository>core</repository>
+    <alias>Order datedate_yeardate_year_monthdate_year_seasondate_seasondate_year_quarter</alias>
+    <domain>orders</domain>
+    <parentID>order_date</parentID>
+    <type>date_year_quarter</type>
+    <expression>order_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="ORDER_DATE_DATE_YEAR_SEASON">
+    <repository>core</repository>
+    <alias>Order datedate_yeardate_year_monthdate_year_season</alias>
+    <domain>orders</domain>
+    <parentID>order_date</parentID>
+    <type>date_year_season</type>
+    <expression>order_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="ORDER_ID">
+    <repository>core</repository>
+    <alias>Order id</alias>
+    <parentID>order_id</parentID>
+    <description>order_items orders</description>
+    <expression>order_id</expression>
+    <options>
+      <style>STYLE_PK</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="ORDER_ITEMS_ID">
+    <repository>core</repository>
+    <alias>Order items id</alias>
+    <domain>order_items</domain>
+    <parentID>order_items_id</parentID>
+    <expression>order_items_id</expression>
+    <options>
+      <style>STYLE_PK</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="ORDER_STATUS">
+    <repository>core</repository>
+    <alias>Order status</alias>
+    <domain>orders</domain>
+    <parentID>order_status</parentID>
+    <expression>order_status</expression>
+    <options>
+      <style>STYLE_INTEGER</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="PHONE">
+    <repository>core</repository>
+    <alias>Phone</alias>
+    <parentID>phone</parentID>
+    <description>customers staffs stores</description>
+    <expression>phone</expression>
+    <options>
+      <style>STYLE_STRING</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="PRODUCT_ID">
+    <repository>core</repository>
+    <alias>Product id</alias>
+    <parentID>product_id</parentID>
+    <description>order_items products stocks</description>
+    <expression>product_id</expression>
+    <options>
+      <style>STYLE_PK</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectSEQ="1" SXmlObjectID="PRODUCT_ID_PTR_PRODUCTS">
+    <repository>core</repository>
+    <alias><![CDATA[Product id -> Products]]></alias>
+    <parentID>product_id</parentID>
+    <description><![CDATA[stocks(product_id) -> products(product_id)]]></description>
+    <expression>product_name, model_year 
+// product_id, product_name, brand_id, category_id, model_year, list_price</expression>
+    <pointer enabled="true">
+      <datasource>QUERY_PRODUCTS_GLOBALS</datasource>
+      <link>product_id:product_id</link>
+    </pointer>
+    <options>
+      <style>STYLE_POINTER</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="PRODUCT_NAME">
+    <repository>core</repository>
+    <alias>Product name</alias>
+    <domain>products</domain>
+    <parentID>product_name</parentID>
+    <expression>product_name</expression>
+    <options>
+      <style>STYLE_STRING</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectSEQ="1" SXmlObjectID="QUANTITY">
+    <repository>core</repository>
+    <alias>Quantity</alias>
+    <parentID>quantity</parentID>
+    <description>order_items stocks</description>
+    <expression>quantity</expression>
+    <totalFunction>SUM</totalFunction>
+    <options>
+      <style>STYLE_INTEGER</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="REQUIRED_DATE">
+    <repository>core</repository>
+    <alias>Required date</alias>
+    <domain>orders</domain>
+    <parentID>required_date</parentID>
+    <expression>required_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="REQUIRED_DATE_DATE_DAY_OF_WEEK">
+    <repository>core</repository>
+    <alias>Required datedate_yeardate_year_monthdate_year_seasondate_seasondate_year_quarterdate_quarterdate_monthdate_day_of_week</alias>
+    <domain>orders</domain>
+    <parentID>required_date</parentID>
+    <type>date_day_of_week</type>
+    <expression>required_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="REQUIRED_DATE_DATE_MONTH">
+    <repository>core</repository>
+    <alias>Required datedate_yeardate_year_monthdate_year_seasondate_seasondate_year_quarterdate_quarterdate_month</alias>
+    <domain>orders</domain>
+    <parentID>required_date</parentID>
+    <type>date_month</type>
+    <expression>required_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="REQUIRED_DATE_DATE_QUARTER">
+    <repository>core</repository>
+    <alias>Required datedate_yeardate_year_monthdate_year_seasondate_seasondate_year_quarterdate_quarter</alias>
+    <domain>orders</domain>
+    <parentID>required_date</parentID>
+    <type>date_quarter</type>
+    <expression>required_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="REQUIRED_DATE_DATE_SEASON">
+    <repository>core</repository>
+    <alias>Required datedate_yeardate_year_monthdate_year_seasondate_season</alias>
+    <domain>orders</domain>
+    <parentID>required_date</parentID>
+    <type>date_season</type>
+    <expression>required_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="REQUIRED_DATE_DATE_YEAR">
+    <repository>core</repository>
+    <alias>Required datedate_year</alias>
+    <domain>orders</domain>
+    <parentID>required_date</parentID>
+    <type>date_year</type>
+    <expression>required_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="REQUIRED_DATE_DATE_YEAR_MONTH">
+    <repository>core</repository>
+    <alias>Required datedate_yeardate_year_month</alias>
+    <domain>orders</domain>
+    <parentID>required_date</parentID>
+    <type>date_year_month</type>
+    <expression>required_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="REQUIRED_DATE_DATE_YEAR_QUARTER">
+    <repository>core</repository>
+    <alias>Required datedate_yeardate_year_monthdate_year_seasondate_seasondate_year_quarter</alias>
+    <domain>orders</domain>
+    <parentID>required_date</parentID>
+    <type>date_year_quarter</type>
+    <expression>required_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="REQUIRED_DATE_DATE_YEAR_SEASON">
+    <repository>core</repository>
+    <alias>Required datedate_yeardate_year_monthdate_year_season</alias>
+    <domain>orders</domain>
+    <parentID>required_date</parentID>
+    <type>date_year_season</type>
+    <expression>required_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="SHIPPED_DATE">
+    <repository>core</repository>
+    <alias>Shipped date</alias>
+    <domain>orders</domain>
+    <parentID>shipped_date</parentID>
+    <expression>shipped_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="SHIPPED_DATE_DATE_DAY_OF_WEEK">
+    <repository>core</repository>
+    <alias>Shipped datedate_yeardate_year_monthdate_year_seasondate_seasondate_year_quarterdate_quarterdate_monthdate_day_of_week</alias>
+    <domain>orders</domain>
+    <parentID>shipped_date</parentID>
+    <type>date_day_of_week</type>
+    <expression>shipped_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="SHIPPED_DATE_DATE_MONTH">
+    <repository>core</repository>
+    <alias>Shipped datedate_yeardate_year_monthdate_year_seasondate_seasondate_year_quarterdate_quarterdate_month</alias>
+    <domain>orders</domain>
+    <parentID>shipped_date</parentID>
+    <type>date_month</type>
+    <expression>shipped_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="SHIPPED_DATE_DATE_QUARTER">
+    <repository>core</repository>
+    <alias>Shipped datedate_yeardate_year_monthdate_year_seasondate_seasondate_year_quarterdate_quarter</alias>
+    <domain>orders</domain>
+    <parentID>shipped_date</parentID>
+    <type>date_quarter</type>
+    <expression>shipped_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="SHIPPED_DATE_DATE_SEASON">
+    <repository>core</repository>
+    <alias>Shipped datedate_yeardate_year_monthdate_year_seasondate_season</alias>
+    <domain>orders</domain>
+    <parentID>shipped_date</parentID>
+    <type>date_season</type>
+    <expression>shipped_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="SHIPPED_DATE_DATE_YEAR">
+    <repository>core</repository>
+    <alias>Shipped datedate_year</alias>
+    <domain>orders</domain>
+    <parentID>shipped_date</parentID>
+    <type>date_year</type>
+    <expression>shipped_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="SHIPPED_DATE_DATE_YEAR_MONTH">
+    <repository>core</repository>
+    <alias>Shipped datedate_yeardate_year_month</alias>
+    <domain>orders</domain>
+    <parentID>shipped_date</parentID>
+    <type>date_year_month</type>
+    <expression>shipped_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="SHIPPED_DATE_DATE_YEAR_QUARTER">
+    <repository>core</repository>
+    <alias>Shipped datedate_yeardate_year_monthdate_year_seasondate_seasondate_year_quarter</alias>
+    <domain>orders</domain>
+    <parentID>shipped_date</parentID>
+    <type>date_year_quarter</type>
+    <expression>shipped_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="SHIPPED_DATE_DATE_YEAR_SEASON">
+    <repository>core</repository>
+    <alias>Shipped datedate_yeardate_year_monthdate_year_season</alias>
+    <domain>orders</domain>
+    <parentID>shipped_date</parentID>
+    <type>date_year_season</type>
+    <expression>shipped_date</expression>
+    <options>
+      <style>STYLE_DATETIME</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="STAFF_ID">
+    <repository>core</repository>
+    <alias>Staff id</alias>
+    <parentID>staff_id</parentID>
+    <description>orders staffs</description>
+    <expression>staff_id</expression>
+    <options>
+      <style>STYLE_PK</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectSEQ="1" SXmlObjectID="STAFF_ID_PTR_STAFFS">
+    <repository>core</repository>
+    <alias><![CDATA[Staff id -> Staffs]]></alias>
+    <parentID>staff_id</parentID>
+    <description><![CDATA[orders(staff_id) -> staffs(staff_id)]]></description>
+    <expression>first_name, last_name
+//first_name, last_name, email, phone
+// staff_id, first_name, last_name, email, phone, active, store_id, manager_id</expression>
+    <pointer enabled="true">
+      <datasource>QUERY_STAFFS_GLOBALS</datasource>
+      <link>staff_id:staff_id</link>
+    </pointer>
+    <options>
+      <style>STYLE_POINTER</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="STATE">
+    <repository>core</repository>
+    <alias>State</alias>
+    <parentID>state</parentID>
+    <description>customers stores</description>
+    <expression>state</expression>
+    <options>
+      <style>STYLE_STRING</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="STORE_ID">
+    <repository>core</repository>
+    <alias>Store id</alias>
+    <parentID>store_id</parentID>
+    <description>orders staffs stocks stores</description>
+    <expression>store_id</expression>
+    <options>
+      <style>STYLE_PK</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectSEQ="1" SXmlObjectID="STORE_ID_PTR_STORES">
+    <repository>core</repository>
+    <alias><![CDATA[Store id -> Stores]]></alias>
+    <parentID>store_id</parentID>
+    <description><![CDATA[stocks(store_id) -> stores(store_id)]]></description>
+    <expression>store_name
+//store_name, phone, email, street, city, state
+// store_id, store_name, phone, email, street, city, state, zip_code</expression>
+    <pointer enabled="true">
+      <datasource>QUERY_STORES_GLOBALS</datasource>
+      <link>store_id:store_id</link>
+    </pointer>
+    <options>
+      <style>STYLE_POINTER</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="STORE_NAME">
+    <repository>core</repository>
+    <alias>Store name</alias>
+    <domain>stores</domain>
+    <parentID>store_name</parentID>
+    <expression>store_name</expression>
+    <options>
+      <style>STYLE_STRING</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="STREET">
+    <repository>core</repository>
+    <alias>Street</alias>
+    <parentID>street</parentID>
+    <description>customers stores</description>
+    <expression>street</expression>
+    <options>
+      <style>STYLE_STRING</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectSEQ="1" SXmlObjectID="TOTAL_PRICE">
+    <repository>core</repository>
+    <alias>Total price</alias>
+    <domain>order_items</domain>
+    <parentID>total_price</parentID>
+    <expression>total_price</expression>
+    <totalFunction>SUM</totalFunction>
+    <options>
+      <style>STYLE_DECIMAL</style>
+    </options>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="factor" SXmlObjectID="ZIP_CODE">
+    <repository>core</repository>
+    <alias>Zip code</alias>
+    <parentID>zip_code</parentID>
+    <description>customers stores</description>
+    <expression>zip_code</expression>
+    <options>
+      <style>STYLE_INTEGER</style>
+    </options>
+  </SXmlObject>
+</storm>

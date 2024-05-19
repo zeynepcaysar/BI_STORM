@@ -1,0 +1,643 @@
+<storm>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectID="CHART_CUSTOMERS">
+    <repository>core</repository>
+    <alias>Customers with orders</alias>
+    <parentID>DATASET_CUSTOMERS</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>wordcloud</type>
+        <factor>ORDER_ID</factor>
+        <function>COUNT</function>
+        <dimension>LAST_NAME</dimension>
+        <limitDimension>2000</limitDimension>
+        <colorByPoint>true</colorByPoint>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectSEQ="2" SXmlObjectID="CHART_DATASET_EMPLOYEE">
+    <repository>core</repository>
+    <alias>Active staff members</alias>
+    <parentID>DATASET_EMPLOYEE</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>wordcloud</type>
+        <factor>ACTIVE</factor>
+        <dimension>LAST_NAME</dimension>
+        <colorByPoint>true</colorByPoint>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectSEQ="8" SXmlObjectID="CHART_LIST_PRICE_OF_PRODUCTS">
+    <repository>core</repository>
+    <alias>quantity of items in all orders</alias>
+    <parentID>DATASET_ORDER_ITEMS</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>pie</type>
+        <factor>QUANTITY</factor>
+        <function>SUM</function>
+        <dimension>PRODUCT_NAME</dimension>
+        <stackType>normal</stackType>
+        <colorByPoint>true</colorByPoint>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectID="CHART_NUMBER_OF_EMPLOYEES">
+    <repository>core</repository>
+    <alias>number of employees</alias>
+    <parentID>DATASET_STAFFS</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <dimension>STORE_ID_PTR_STORES</dimension>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>column</type>
+        <factor>STAFF_ID</factor>
+        <function>COUNT</function>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectSEQ="3" SXmlObjectID="CHART_ORDERS">
+    <repository>core</repository>
+    <alias>orders by staffs</alias>
+    <parentID>DATASET_ORDERS</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <dimension>STORE_ID_PTR_STORES</dimension>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>column</type>
+        <factor>ORDER_ID</factor>
+        <function>COUNT</function>
+        <dimension>STAFF_ID_PTR_STAFFS</dimension>
+        <stackType>normal</stackType>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectID="CHART_ORDER_BY_STAFFS_BY_STORES">
+    <repository>core</repository>
+    <alias>order by staffs by stores</alias>
+    <parentID>DATASET_ORDERS</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <dimension>STORE_ID_PTR_STORES</dimension>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>column</type>
+        <factor>ORDER_ID</factor>
+        <dimension>STAFF_ID_PTR_STAFFS</dimension>
+        <stackType>normal</stackType>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectSEQ="8" SXmlObjectID="CHART_ORDER_ITEMS">
+    <repository>core</repository>
+    <alias>Quantity of Order items</alias>
+    <parentID>DATASET_ORDER_ITEMS</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <dimension>PRODUCT_NAME</dimension>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>column</type>
+        <factor>QUANTITY</factor>
+        <function>SUM</function>
+        <stackType>normal</stackType>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectID="CHART_PRODUCTS">
+    <repository>core</repository>
+    <alias>Products</alias>
+    <parentID>DATASET_PRODUCTS</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <dimension>MODEL_YEAR</dimension>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>bar</type>
+        <factor>PRODUCT_NAME</factor>
+        <dimension>CATEGORY_ID_PTR_CATEGORIES</dimension>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectSEQ="1" SXmlObjectID="CHART_PRODUCTS_1">
+    <repository>core</repository>
+    <alias>Products</alias>
+    <parentID>DATASET_PRODUCTS</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <dimension>CATEGORY_ID_PTR_CATEGORIES</dimension>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>column</type>
+        <factor>LIST_PRICE</factor>
+        <dimension>BRAND_ID_PTR_BRANDS</dimension>
+        <stackType>percent</stackType>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectSEQ="2" SXmlObjectID="CHART_PRODUCTS_2">
+    <repository>core</repository>
+    <alias>List price of products</alias>
+    <parentID>DATASET_PRODUCTS</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <dimension>PRODUCT_NAME</dimension>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>scatter</type>
+        <factor>LIST_PRICE</factor>
+        <stackType>normal</stackType>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectSEQ="1" SXmlObjectID="CHART_TOTAL_STOCK_NUMBER_IN_STORES">
+    <repository>core</repository>
+    <alias>Total stock in stores</alias>
+    <parentID>DATASET_STOCKS</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <dimension>STORE_ID_PTR_STORES</dimension>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>pie</type>
+        <factor>QUANTITY</factor>
+        <limitDimension>100</limitDimension>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectSEQ="4" SXmlObjectID="CHART_STORES_1">
+    <repository>core</repository>
+    <alias>Address of Stores</alias>
+    <parentID>DATASET_STORES</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>pie</type>
+        <factor>STORE_ID</factor>
+        <function>COUNT</function>
+        <dimension>STREET, STATE, STORE_NAME</dimension>
+        <colorByPoint>true</colorByPoint>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectSEQ="3" SXmlObjectID="CHART_ORDER_ITEMS_1">
+    <repository>core</repository>
+    <alias>Bar chart of list prices</alias>
+    <parentID>DATASET_ORDER_ITEMS</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>bar</type>
+        <factor>LIST_PRICE</factor>
+        <function>MAX</function>
+        <dimension>PRODUCT_NAME</dimension>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectSEQ="1" SXmlObjectID="CHART_TOTAL_PRICE_OF_ORDER_ITEMS">
+    <repository>core</repository>
+    <alias>Total price of order items</alias>
+    <parentID>DATASET_ORDER_ITEMS</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <dimension>PRODUCT_NAME</dimension>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>line</type>
+        <factor>TOTAL_PRICE</factor>
+        <function>SUM</function>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectSEQ="2" SXmlObjectID="CHART_CUSTOMERS_1">
+    <repository>core</repository>
+    <alias>Number of customers by state</alias>
+    <parentID>DATASET_CUSTOMERS</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>pie</type>
+        <factor>CUSTOMER_ID</factor>
+        <function>COUNT</function>
+        <dimension>STATE</dimension>
+        <colorByPoint>true</colorByPoint>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectSEQ="1" SXmlObjectID="CHART_ORDERS_1">
+    <repository>core</repository>
+    <alias>Number of orders in stores</alias>
+    <parentID>DATASET_ORDERS</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <dimension>STORE_ID_PTR_STORES</dimension>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>bar</type>
+        <factor>ORDER_ID</factor>
+        <function>COUNT</function>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectSEQ="2" SXmlObjectID="CHART_STATES_OF_STORES">
+    <repository>core</repository>
+    <alias>states of stores</alias>
+    <parentID>DATASET_STORES</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>wordcloud</type>
+        <factor>STORE_ID</factor>
+        <function>COUNT</function>
+        <dimension>STATE, CITY</dimension>
+        <colorByPoint>true</colorByPoint>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+</storm>

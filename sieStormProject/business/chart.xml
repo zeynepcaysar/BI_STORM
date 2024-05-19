@@ -1,0 +1,39 @@
+<storm>
+  <SXmlObject SXmlObjectTYPE="chart" SXmlObjectSEQ="1" SXmlObjectID="CHART_STORES">
+    <repository>business</repository>
+    <alias>Stores</alias>
+    <parentID>DATASET_STORES</parentID>
+    <owner>storm</owner>
+    <xAxis>
+      <type>category</type>
+    </xAxis>
+    <legend>
+      <layout>horizontal</layout>
+    </legend>
+    <series>
+      <value>
+        <type>pie</type>
+        <factor>STORE_ID</factor>
+        <dimension>STREET, STORE_NAME</dimension>
+        <colorByPoint>true</colorByPoint>
+      </value>
+    </series>
+    <annotations>
+      <data><![CDATA[[
+  {
+    "labels": [
+      {
+        "point": {
+          "x": 1,
+          "y": 1
+        },
+        "text": "Some free text",
+        "backgroundColor": "darkgray",
+        "borderColor": "lightgray"
+      }
+    ]
+  }
+]]]></data>
+    </annotations>
+  </SXmlObject>
+</storm>
